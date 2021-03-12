@@ -17,8 +17,8 @@ class GCD extends Module {
   })
 //  io.z := io.a
 //  io.v := DontCare
-  val x = Reg(UInt())
-  val y = Reg(UInt())
+  val x = RegInit(0.U(16.W))
+  val y = RegInit(0.U(16.W))
 
   when(x > y) { x := x - y }.otherwise { y := y - x }
 
@@ -41,4 +41,5 @@ object GCDTester extends App {
 //        Seq(ChiselGeneratorAnnotation(() => gen)))
 //    }
 //    getLowFirrtl(new GCD)
+//  (new chisel3.stage.ChiselStage).emitVerilog(new GCD,Array("-td", targetDir) )
 }

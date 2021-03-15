@@ -2,9 +2,9 @@
 
 This project can generate [ELK Graph](https://www.eclipse.org/elk/documentation/tooldevelopers/graphdatastructure.html) files, which can be layout by [ELK](https://www.eclipse.org/elk/) and rendered by [icviewer](https://github.com/easysoc/icviewer) as an interactive diagram to represent Chisel generated Firrtl circuits.
 
-> If you want to see the ELK Graph directly, you can use [this](https://rtsys.informatik.uni-kiel.de/elklive/elkgraph.html) online service, it is open source https://github.com/kieler/elk-live . But there may be some bugs, which are not suitable for circuit diagrams.
+> If you want to see the ELK Graph directly, you can use [this](https://rtsys.informatik.uni-kiel.de/elklive/elkgraph.html) online service, it's open source https://github.com/kieler/elk-live . But there may be some bugs, which are not suitable for circuit diagrams.
 >
-> It is highly recommended to using the IntelliJ plugin to view your circuit. It supports interactive viewing of the sub-modules by double-click. In addition, it supports back navigation, zoom view, export SVG format and other functions.
+> It is highly recommended to using the [IntelliJ plugin](https://plugins.jetbrains.com/plugin/16255-easysoc-diagrammer) to view your circuit. It supports interactive viewing of the sub-modules by double-click. In addition, it supports back navigation, zoom view, export SVG format and other functions.
 
 The main idea is that the layout of graph use a [layer-based](https://www.eclipse.org/elk/reference/algorithms/org-eclipse-elk-layered.html) algorithm provided by the Eclipse Layout Kernel, and the graph rendering is implemented by [Sprotty](https://github.com/eclipse/sprotty) diagramming framework. The combination of the two gives us a very intuitive circuit schematics.
 

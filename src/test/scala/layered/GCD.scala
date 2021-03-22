@@ -7,24 +7,27 @@ import chisel3.stage.ChiselGeneratorAnnotation
 import layered.stage.ElkStage
 
 class GCD extends Module {
-  //noinspection TypeAnnotation
   val io = IO(new Bundle {
-    val a = Input(UInt(16.W))
-    val b = Input(UInt(16.W))
-    val e = Input(Bool())
-    val z = Output(UInt(16.W))
-    val v = Output(Bool())
+    val value1        = Input(UInt(16.W))
+    val value2        = Input(UInt(16.W))
+    val loadingValues = Input(Bool())
+    val outputGCD     = Output(UInt(16.W))
+    val outputValid   = Output(Bool())
   })
-//  io.z := io.a
-//  io.v := DontCare
-  val x = RegInit(0.U(16.W))
-  val y = RegInit(0.U(16.W))
 
-  when(x > y) { x := x - y }.otherwise { y := y - x }
+  val x  = RegInit(0.U(16.W))
+  val y  = RegInit(0.U(16.W))
 
-  when(io.e) { x := io.a; y := io.b }
-  io.z := x
-  io.v := y === 0.U
+  when(x > y) { x := x - y }
+    .otherwise { y := y - x }
+
+  when(io.loadingValues) {
+    x := io.value1
+    y := io.value2
+  }
+
+  io.outputGCD := x
+  io.outputValid := y === 0.U
 }
 
 object GCDTester extends App {
@@ -41,5 +44,5 @@ object GCDTester extends App {
 //        Seq(ChiselGeneratorAnnotation(() => gen)))
 //    }
 //    getLowFirrtl(new GCD)
-//  (new chisel3.stage.ChiselStage).emitVerilog(new GCD,Array("-td", targetDir) )
+  (new chisel3.stage.ChiselStage).emitVerilog(new GCD,Array("-td", targetDir) )
 }

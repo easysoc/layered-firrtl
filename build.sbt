@@ -14,7 +14,7 @@ val defaultVersions = Map(
 organization := "org.easysoc"
 organizationName := "EasySoC"
 organizationHomepage := Some(url("https://github.com/easysoc/"))
-version := "1.0.6"
+version := "1.0.7"
 autoAPIMappings := true
 // should match chisel's dependencies https://search.maven.org/artifact/edu.berkeley.cs/chisel3-core_2.12
 scalaVersion := "2.12.12"
@@ -24,6 +24,15 @@ scalacOptions := Seq("-deprecation", "-feature") ++ scalacOptionsVersion(scalaVe
 //crossPaths := false
 publishConfiguration := publishConfiguration.value.withOverwrite(true)
 publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
+
+lazy val root = (project in file(".")).
+  enablePlugins(BuildInfoPlugin).
+  settings(
+    buildInfoKeys := Seq[BuildInfoKey](version),
+    buildInfoKeys ++= Seq[BuildInfoKey]("chiselVersion" -> defaultVersions("chisel3")),
+    buildInfoPackage := "layered",
+    buildInfoUsePackageAsPath := true
+  )
 
 def scalacOptionsVersion(scalaVersion: String): Seq[String] = {
   Seq() ++ {

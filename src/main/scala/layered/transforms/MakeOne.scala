@@ -386,6 +386,7 @@ class MakeOne extends Transform with DependencyAPIMigration {
 
     findModule(startModuleName, c) match {
       case topModule: DefModule =>
+        pl(s"// ${layered.BuildInfo.toString}, for more information, visit https://github.com/easysoc/layered-firrtl")
         pl("algorithm: layered")
         pl("hierarchyHandling: INCLUDE_CHILDREN")
         val topModuleNode = ModuleNode(startModuleName, parentOpt = None)

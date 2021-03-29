@@ -17,7 +17,7 @@ case class StartModuleNameAnnotation(name: String)
 object StartModuleNameAnnotation extends HasShellOptions {
   val options = Seq(
     new ShellOption[String](
-      longOption = "module-name",
+      longOption = "top",
       toAnnotationSeq = (a: String) => Seq(StartModuleNameAnnotation(a)),
       helpText = "The module in the hierarchy to start, default is the circuit top"
     )
@@ -47,9 +47,9 @@ case object SerializeAnnotation
     with Unserializable {
   val options = Seq(
     new ShellOption[Unit](
-      longOption = "serialize",
+      longOption = "lowFir",
       toAnnotationSeq = _ => Seq(SerializeAnnotation),
-      helpText = "Serialize the loFirrtl circuit state to a lo.fir file"
+      helpText = "Serialize the low Firrtl circuit state to a lo.fir file"
     )
   )
 }

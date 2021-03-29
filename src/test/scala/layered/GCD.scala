@@ -35,7 +35,7 @@ object GCDTester extends App {
   val targetDir = "test_run_dir/gcd"
 
   (new ElkStage).execute(
-    Array("--target-dir", targetDir, "--serialize"),
+    Array("--target-dir", targetDir, "--lowFir"),
     Seq(ChiselGeneratorAnnotation(() => new GCD))
   )
 

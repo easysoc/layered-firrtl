@@ -97,7 +97,7 @@ object HierarchicalModulesExample extends App {
     ChiselGeneratorAnnotation(() => new TopOfVisualizer)
   )
 
-  (new ElkStage).execute(Array("--serialize"), annos)
+  (new ElkStage).execute(Array("--lowFir"), annos)
 //  (new ElkStage).execute(Array("--flatten", "2"), annos)
-//  (new ElkStage).execute(Array("--module-name", "VizModA"), annos)
+//  (new ElkStage).execute(Array("--top", "VizModA"), annos)
 }

@@ -30,7 +30,7 @@ https://search.maven.org/artifact/org.easysoc/layered-firrtl_2.12
 for SBT
 
 ```
-"org.easysoc" %% "layered-firrtl" % "1.0.6",
+"org.easysoc" %% "layered-firrtl" % "1.0.8",
 ```
 
 **Source**
@@ -69,7 +69,7 @@ This will create a number of files in the `test_run_dir/${circuit.main}` directo
 ## Options
 * `-i`, set the source firrtl to work on
 * `-td,--target-dir` work directory (default: "./test_run_dir")
-* `--module-name`  the module in the hierarchy to start, default is the circuit top
+* `--top`  the module in the hierarchy to start, default is the circuit top
 * `--flatten` the maxDepth of the flatten levels
     * It is not recommended to exceed 2, otherwise the generated graph is too complicated
-* `--serialize` generate the corresponding lo.fir file
+* `--lowFir` generate the corresponding lo.fir file

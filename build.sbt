@@ -8,13 +8,13 @@ resolvers ++= Seq(
 )
 
 val defaultVersions = Map(
-  "chisel3" -> "3.4.2"
+  "chisel3" -> "3.4.3"
 )
 
 organization := "org.easysoc"
 organizationName := "EasySoC"
 organizationHomepage := Some(url("https://github.com/easysoc/"))
-version := "1.0.8"
+version := "1.0.9"
 autoAPIMappings := true
 // should match chisel's dependencies https://search.maven.org/artifact/edu.berkeley.cs/chisel3-core_2.12
 scalaVersion := "2.12.12"

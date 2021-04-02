@@ -30,7 +30,7 @@ https://search.maven.org/artifact/org.easysoc/layered-firrtl_2.12
 for SBT
 
 ```
-"org.easysoc" %% "layered-firrtl" % "1.0.8",
+"org.easysoc" %% "layered-firrtl" % "1.0.9",
 ```
 
 **Source**

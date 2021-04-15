@@ -8,15 +8,18 @@ resolvers ++= Seq(
 )
 
 val defaultVersions = Map(
+//  "chisel3" -> "3.5-SNAPSHOT"
   "chisel3" -> "3.4.3"
 )
 
 organization := "org.easysoc"
 organizationName := "EasySoC"
 organizationHomepage := Some(url("https://github.com/easysoc/"))
-version := "1.0.9"
+//version := "1.1-SNAPSHOT"
+version := "1.1.0"
 autoAPIMappings := true
 // should match chisel's dependencies https://search.maven.org/artifact/edu.berkeley.cs/chisel3-core_2.12
+//scalaVersion := "2.12.13"
 scalaVersion := "2.12.12"
 crossScalaVersions := Seq("2.13.4", "2.12.13")
 scalacOptions := Seq("-deprecation", "-feature") ++ scalacOptionsVersion(scalaVersion.value)
@@ -61,7 +64,7 @@ def javacOptionsVersion(scalaVersion: String): Seq[String] = {
 }
 
 publishMavenStyle := true
-publishArtifact in Test := false
+Test / publishArtifact := false
 pomIncludeRepository := { _ => false }
 // Don't add 'scm' elements if we have a git.remoteRepo definition,
 //  but since we don't (with the removal of ghpages), add them in below.
@@ -104,11 +107,11 @@ javacOptions ++= javacOptionsVersion(scalaVersion.value)
 
 // Assembly
 
-assemblyJarName in assembly := "layered-firrtl.jar"
+assembly / assemblyJarName := "layered-firrtl.jar"
 
-test in assembly := {} // Should there be tests?
+assembly / test := {} // Should there be tests?
 
-assemblyOutputPath in assembly := file("./utils/bin/layered-firrtl.jar")
+assembly / assemblyOutputPath := file("./utils/bin/layered-firrtl.jar")
 
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 import scala.xml.transform.{RewriteRule, RuleTransformer}

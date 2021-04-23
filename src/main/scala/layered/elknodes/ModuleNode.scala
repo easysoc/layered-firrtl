@@ -13,6 +13,11 @@ case class ModuleNode(
     extends ElkNode {
 
   val indentation: String = "    " * subModuleDepth
+  val fixName: String = parentOpt match {
+      case Some(_) =>     s"submodule_${name.replace('_','0')}"
+      case _            => name
+    }
+
   var renderWithRank: Boolean = false
 
   val namedNodes:     mutable.HashMap[String, ElkNode] = new mutable.HashMap()
@@ -36,11 +41,11 @@ case class ModuleNode(
       sources.map { vv => s"""${indentation}edge e${Edge.hash} : $vv -> $target""" }.mkString("\n    ")
     }
     val s = s"""
-               |${indentation}node $name$graphUrl {
+               |${indentation}node $fixName$graphUrl {
                |    ${indentation}portConstraints: FIXED_SIDE
                |    ${indentation}nodeLabels.placement: "H_CENTER V_TOP OUTSIDE"
                |    ${indentation}nodeSize.constraints: "PORTS PORT_LABELS NODE_LABELS"
-               |    ${indentation}label "${name.stripPrefix("submodule_")}"
+               |    ${indentation}label "$name"
                |    $indentation${children.map(_.render).mkString("")}
                |    ${connections.map { case (k, v) => s"${indentation}edge e${Edge.hash} : $v -> $k" }.mkString("\n    ")}
                |    ${analogConnections.map { case (k, v) => expandBiConnects(k, v) }.mkString("\n    ")}
@@ -51,8 +56,8 @@ case class ModuleNode(
 
   override def absoluteName: String = {
     parentOpt match {
-      case Some(parent) => s"${parent.absoluteName}.$name$graphUrl"
-      case _            => s"$name"
+      case Some(parent) => s"${parent.absoluteName}.$fixName$graphUrl"
+      case _            => s"$fixName"
     }
   }
 

@@ -319,7 +319,7 @@ class MakeOne extends Transform with DependencyAPIMigration {
             val newPrefix = if (modulePrefix.isEmpty) instanceName else modulePrefix + "." + instanceName
             val moduleNameParsed = moduleName.split("/").last
             val subModuleNode =
-              ModuleNode(s"submodule_$instanceName", Some(moduleNode), Some(moduleNameParsed), subModuleDepth + 1)
+              ModuleNode(instanceName, Some(moduleNode), Some(moduleNameParsed), subModuleDepth + 1)
             moduleNode += subModuleNode
 
             subModulesFound += subModule

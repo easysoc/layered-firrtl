@@ -16,7 +16,7 @@ organization := "org.easysoc"
 organizationName := "EasySoC"
 organizationHomepage := Some(url("https://github.com/easysoc/"))
 //version := "1.1-SNAPSHOT"
-version := "1.1.0"
+version := "1.1.1"
 autoAPIMappings := true
 // should match chisel's dependencies https://search.maven.org/artifact/edu.berkeley.cs/chisel3-core_2.12
 //scalaVersion := "2.12.13"

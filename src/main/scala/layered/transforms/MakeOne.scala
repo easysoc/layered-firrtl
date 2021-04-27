@@ -28,7 +28,7 @@ class MakeOne extends Transform with DependencyAPIMigration {
     val nameToNode: mutable.HashMap[String, ElkNode] = new mutable.HashMap()
 
     val c = state.circuit
-    val targetDir = state.annotations.collectFirst { case TargetDirAnnotation(dir) => dir }.get
+    val targetDir = state.annotations.collectFirst { case TargetDirAnnotation(dir) => dir }.get.stripSuffix("/")
 
     val startModuleName = state.annotations.collectFirst {
       case StartModuleNameAnnotation(moduleName) => moduleName

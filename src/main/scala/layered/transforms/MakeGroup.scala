@@ -35,7 +35,7 @@ class MakeGroup extends Transform with DependencyAPIMigration {
     }.getOrElse(false)
 
     if (serialize) {
-      val targetDir = state.annotations.collectFirst { case TargetDirAnnotation(dir) => dir }.get
+      val targetDir = state.annotations.collectFirst { case TargetDirAnnotation(dir) => dir }.get.stripSuffix("/")
       import java.io.BufferedWriter
       import java.io.FileWriter
       val bufferedWriter = new BufferedWriter(new FileWriter(s"$targetDir/$startModuleName.lo.fir"))

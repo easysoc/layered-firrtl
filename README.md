@@ -31,7 +31,7 @@ for SBT
 
 ```
 // "org.easysoc" %% "layered-firrtl" % "1.1-SNAPSHOT"
-"org.easysoc" %% "layered-firrtl" % "1.1.0"
+"org.easysoc" %% "layered-firrtl" % "1.1.+"
 ```
 
 **Source**

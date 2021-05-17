@@ -45,15 +45,15 @@ class AttachExample extends AnyFreeSpec with Matchers {
     val output = outputBuf.toString
 
     // confirm user gets message
-    output should include("creating elk file test_run_dir/attach/AttachTest.graph")
+    output should include("Creating elk graph file test_run_dir/attach/AttachTest.graph")
 
     val lines = Source.fromFile(s"$dir/AttachTest.graph").getLines()
 
     val targets = Seq(
-      s"""    edge AttachTest.io2_out1 -> AttachTest.io2_in""",
-      s"""    edge AttachTest.io2_out2 -> AttachTest.io2_in""",
-      s"""    edge AttachTest.io2_out3 -> AttachTest.io2_in""",
-      s"""    edge AttachTest.io_out -> AttachTest.io_in"""
+      s"""    edge e11 : AttachTest.io2_out1 -> AttachTest.io2_in""",
+      s"""    edge e12 : AttachTest.io2_out2 -> AttachTest.io2_in""",
+      s"""    edge e13 : AttachTest.io2_out3 -> AttachTest.io2_in""",
+      s"""    edge e14 : AttachTest.io_out -> AttachTest.io_in"""
     )
 
     targets.foreach { target =>

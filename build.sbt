@@ -15,13 +15,15 @@ val defaultVersions = Map(
 organization := "org.easysoc"
 organizationName := "EasySoC"
 organizationHomepage := Some(url("https://github.com/easysoc/"))
+// https://oss.sonatype.org/content/repositories/snapshots/edu/berkeley/cs/
+// https://oss.sonatype.org/content/repositories/snapshots/org/easysoc/
 //version := "1.1-SNAPSHOT"
 version := "1.1.1"
 autoAPIMappings := true
 // should match chisel's dependencies https://search.maven.org/artifact/edu.berkeley.cs/chisel3-core_2.12
-//scalaVersion := "2.12.13"
+//scalaVersion := "2.13.6"
 scalaVersion := "2.12.12"
-crossScalaVersions := Seq("2.13.5", "2.12.13")
+crossScalaVersions := Seq("2.13.6", "2.12.13")
 scalacOptions := Seq("-deprecation", "-feature") ++ scalacOptionsVersion(scalaVersion.value)
 
 //crossPaths := false
@@ -97,7 +99,7 @@ libraryDependencies ++= Seq("chisel3").map { dep: String =>
 }
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.8" % "test"
+  "org.scalatest" %% "scalatest" % "3.2.9" % "test"
 )
 
 scalacOptions ++= scalacOptionsVersion(scalaVersion.value)
